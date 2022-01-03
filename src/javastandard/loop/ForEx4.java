@@ -1,0 +1,16 @@
+package javastandard.loop;
+
+public class ForEx4 {
+
+	public static void main(String[] args) {
+
+		// for ÁßÃ¸ ¿ø¸®
+		for (int i = 1; i <= 5; i++) {
+			for (int j = 1; j <= 5; j++) {
+				System.out.printf("[%d,%d]", i, j);
+			}
+			System.out.println();
+		}
+	}
+
+}
