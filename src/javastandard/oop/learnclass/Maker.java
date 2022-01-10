@@ -11,6 +11,18 @@ public class Maker {
 	private int cap; // 뚜껑의 갯수
 	private int body; // 몸체의 객수
 	private String color; // 마카펜의 색깔
+	
+	/**
+	 * 01-10-2022 에 추가된 생성자.<br>
+	 * 뚜겅 1개, 몸체 1개, 검은색인 마카펜 객체를 생성할 때 사용한다.<br>
+	 * Marker 객체명 = new Marker();<br>
+	 * 의 문법으로 생성하여 사용한다.
+	 */
+	public Maker() {
+		cap = 1;
+		body = 1;
+		color = "검은";
+	}
 
 	/**
 	 * 생성된 마카펜 객체에 뚜껑의 갯수를 설정하는 일.

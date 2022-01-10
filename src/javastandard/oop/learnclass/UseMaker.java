@@ -10,9 +10,12 @@ public class UseMaker {
 		// black객체에 뚜겅 1개, 몸체 1개, 검은색을 설정해보자
 		// black.cap = 1; // instance 변수에 private 접근지정자가 선언되어 있어 외부에서 절대로 접근할 수 없다.
 
-		black.setCap(1);
-		black.setBody(1);
-		black.setColor("검은");
+		// 밑의 코드 처럼 instance변수의 값을 초기화 시켜주지 않으면 자동 초기화된 값으로 설정되기 때문에 모순이 생긴다.
+//		black.setCap(1);
+//		black.setBody(1);
+//		black.setColor("검은");
+		
+		// 생성자를 추가한 후 따로 초기화 하지 않고 객체
 		
 		System.out.println(black.getColor() + "색인 마카펜의 뚜껑 :" + black.getCap() + "개, 몸체 :"
 				+ black.getBody()+ "개");
