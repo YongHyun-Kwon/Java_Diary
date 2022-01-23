@@ -1,6 +1,6 @@
 package javastandard.oop;
 
-class Tv {
+class MyTv {
 	// Tv의 속성 tv라는 하나의 설계도를 만든 것과 같다
 
 	String color;
@@ -35,8 +35,8 @@ public class TvTestEx1 {
 	public static void main(String[] args) {
 		// 아래 객체를 생성하는 코드를 보면 String, Array, Scanner등을 선언할 때와 동일하다.
 		// 이것은 String, Array, Scanner 등이 전부 클래스라는 것을 알 수 있다.
-		Tv tv1 = new Tv(); // tv라는 데이터형 tv1을 변수로 선언 하고 new TV()를 통해 생성
-		Tv tv2 = new Tv();
+		MyTv tv1 = new MyTv(); // tv라는 데이터형 tv1을 변수로 선언 하고 new TV()를 통해 생성
+		MyTv tv2 = new MyTv();
 
 		tv1.channel = 7; // tv1의 채널 값을 7로 설정
 		tv2.channel = 6; // tv2의 채널 값을 6으로 설정
