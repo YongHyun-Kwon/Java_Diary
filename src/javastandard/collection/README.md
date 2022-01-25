@@ -1,28 +1,26 @@
 # Collection Framework
 
-강의 번호: Day-0121
-복습: No
-유형: 강의
-작성일시: 2022년 1월 21일 오전 8:59
-
 ## JCF (Java Collection Framwork)
 
 - 자료구조 (데이터를 편하게 사용하기 위해 제공되는 객체들)
 - List, Set, Map 제공.
 - JDK 1.5에서 부터 Generic, autoboxing, unboxing의 기능이 추가
 - **Generic**
+
   - JDK 1.5에서부터 지원되는 기능.
   - 입력 데이터형에 대한 제한 설정할 때 사용.
   - <> → Diamond 연산자를 사용해 데이터형을 설정한다.
   - JCF는 Object를 입력받는다.
+
     - 편의성은 좋으나 꺼내서 사용할 때 문제가 발생할 수도 있다.
-  사용법 → <사용할 데이터형> -**참조형 데이터형만 설정**할 수 있다.
-  Ex) 문자열로만 저장 가능한 `List List<String> list = new ArrayList<String>();`
+      사용법 → <사용할 데이터형> -**참조형 데이터형만 설정**할 수 있다.
+      Ex) 문자열로만 저장 가능한 `List List<String> list = new ArrayList<String>();`
       JDK1.7 부터는 생성자 뒤의 Generic은 생략이 가능하다.
 
-      정수(int)로만 저장가능한 List
+          정수(int)로만 저장가능한 List
 
-      `List<Integer> list = new ArrayList<Integer>();` → **Wrapper Class**를 이용해야한다
+          `List<Integer> list = new ArrayList<Integer>();` → **Wrapper Class**를 이용해야한다
+
 - **Auto boxing**
     <aside>
     💡 **autoboxing**
@@ -75,9 +73,9 @@
     **JDK 1.4 Version 작성법**
     1.  `List i = new ArrayList();` → is a 객체 다형성
     2.  `ArrayList al = new ArrayList();`
-    **JDK 1.5 Version 작성법**
-    1.  `List<E> list = new ArrayList<E>();`
-    2.  `ArrayList<E> al = new ArrayList<E>();`
+        **JDK 1.5 Version 작성법**
+    3.  `List<E> list = new ArrayList<E>();`
+    4.  `ArrayList<E> al = new ArrayList<E>();`
 
   ### LinkedList
 
@@ -104,21 +102,64 @@
     1. 리스트의 크기로 배열을 생성 → `데이터형[] 배열명 = new 데이터형 [ list.size() ];`
     2. 복사 `list.toArray( 생성한 배열 );`
 
-### Set
+## Set
 
-- 일차원 배열 형식
-- 가변길이형
-- **중복 값을 저장하지 않으며, 검색의 기능이 없다.**
-- 부모는 Collection, 자식 HashSet, LinkedSet
+- 검색의 기능이 없으며, 중복데이터가 저장되지 않는다.
+- 데이터가 순차적으로 입력되지 않는다.
+- 값을 유일하게 관리할 때 사용한다.
 
-### Map
+**사용법**
 
-- 이차원 배열 형식
-- 가변길이형.(열은 고정이고 행만 가변)
-- **키와 값의 쌍(entry)으로 이루어진 데이터형.**
-- 키를 사용하여 값을 얻는다.
-- 자식 HshMap, HashTable
+- 객체생성
+  - `Set<E> set = new HashSet<E>();`
+- 값 할당 - 순차적으로 입력되지 않는다.
+  - `set.add( 값 );`
+- 크기
+  - `set.size();`
+- 값이 없는 지?
+  - `set.isEmpty();`
+- 삭제
+  - `set.remove( 값 ); //값 1개만 삭제 set.claer(); //전체삭제`
+- 배열로 복사
+  - 빈 배열생성 → 데이터형[] 배열명 = new 데이터형[방의 갯수];
+  - `set.toArray( 배열명 );`
+- 값 얻기 → index가 없으므로 get( i );를 사용할 수 없다. Iterator을 사용하여 Set의 제어권을 받고, 포인터를 움직여서 데이터를 얻는다.
+  1. 제어권 받기
+     1. `Iterator<E> ita = set.iterator();`
+  2. 포인터가 존재하는 다음 위치에 요소가 존재하는 지?
+     1. `ita.hasNext(); // 요소가 있다면 true, 없다면 false`
+  3. 포인터가 존재하는 곳에 값을 얻고 다음 위치로 이동.
+     1. `ita.next();`
 
-## Stack
+## Map
 
-- LIFO( Last Input First Output )
+- 키와 값의 쌍(entry)으로 이루어진 데이터 형.
+- 키로 값을 검색하는 일.
+- 이차원 배열형식.( 열은 고정이고 행만 가변적이다.)
+- 구현 클래스로 Hashtable과 HashMap이 존재.
+- 전체행의 크기에서 약 75%의 데이터가 채워져 있을 때 검색속도가 가장 빠르다.
+- 키는 중복될 수 없고, 값은 중복 될 수 있다.
+- 같은 키가 입력되면 이전 키에 덮어써서 중복을 처리한다.
+
+**사용법**
+
+1. 생성
+   1. `Map<K,V>map = new Hashtable<K,V>(); // 11개 행 생성 multi thread에서 동시접근 불가능, 속도느림`
+   2. `Map<K,V>map = new HashMap<K,V>(); // 16개 행 생성 multi thread에서 동시접근 가능, 속도빠름`
+2. 값 할당 → 중복 키가 존재한다면 중복 키에 덮어 쓴다. ( Key는 유일) 입력 되는 값이 순차적으로 들어가지 않는다.
+   1. `map.put( Key, Value );`
+3. Map의 크기(행의 개수)
+   1. `map.size();`
+4. 값 얻기
+   1. `value =map.get( Key ); // 키가존재 하면 값이 얻어진다. 키가없다면 null`
+5. Key 존재 여부
+
+   boolean Key 존재 여부 = map.containsKey( Key );
+
+6. 모든 키 얻기 → 값을 검증할 목적으로.
+   1. `Set<E> set = map.keySet();`
+7. 값 삭제.
+   1. `map.remove( Key ); // Key에 해당하는 entry가 삭제`
+   2. `map.clear() // 모든 행을 삭제`
+8. Map이 비었는지
+   1. `map.isEmpty();`

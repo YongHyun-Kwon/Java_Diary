@@ -19,7 +19,7 @@ public class RandomName {
 	public List<String> ranName(int ranNum) {
 
 		List<String> list = new ArrayList<String>();
-		String[] data = { "강명준", "강산", "강현모", "권용현", "김예진", "김의정", "김정하", "김진영", "김현우" };
+		String[] data = { "홍길동", "장그레", "베토벤", "바흐", "뉴턴", "모차르트", "다윈", "갈릴레이", "다빈치" };
 		for (int i = 0; i < ranNum; i++) {
 			list.add(data[ran.nextInt(data.length)]);
 		} // end for
