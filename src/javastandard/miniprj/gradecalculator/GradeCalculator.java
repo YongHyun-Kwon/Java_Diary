@@ -35,7 +35,7 @@ public class GradeCalculator {
 		double result = 0.0;
 		
 		for( Course val : courseList) {
-			result += val.getCredit() * val.parseGrade();
+			result += val.getCredit() * val.getGpa();
 		} // end for
 		result /= getScore(courseList);
 		
@@ -45,7 +45,7 @@ public class GradeCalculator {
 	public double getTotalGPA(ArrayList<Course> co) {
 		double result = 0;
 		for(Course val : courseList) {
-			result += val.getCredit() * val.parseGrade();
+			result += val.getCredit() * val.getGpa();
 		} // end for
 		result += this.grade * this.score;
 		result = result / (getScore(co) + this.score);
